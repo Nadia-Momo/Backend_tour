@@ -3,6 +3,7 @@ import {Server} from "http";
 import mongoose from "mongoose"
 import app from "./app";
 import { envVars } from "./app/config/env";
+import { seedSuperAdmin } from "./app/utils/SeedSuperAdmin";
 let server:Server;
 const srartServer=async()=>{
 try{
@@ -16,7 +17,11 @@ catch(error){
 console.log(error)
 }
 }
-srartServer()
+(async()=>{
+await srartServer()
+await seedSuperAdmin()
+})()
+
 process.on("SIGTERM",()=>{
     console.log("SIGTERM Signal received....Server shutting down");
     if(server){

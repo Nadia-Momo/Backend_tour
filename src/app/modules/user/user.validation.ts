@@ -127,7 +127,7 @@ message:"Password must contain at least 1  uppercase letter.",
 .regex(/^(?=.*\d)/,{
     message:"Password must contain at least 1 number",
 }),
-phone:z.string().regex(/^(?:\+8801\d{9}|01\d{9})$/,{message:"phone number must be valid for Bangladesh.Format:+8801XXXXXXXXX or 01XXXXXXXXX"}),
+phone:z.string().regex(/^(?:\+8801\d{9}|01\d{9})$/,{message:"phone number must be valid for Bangladesh.Format:+8801XXXXXXXXX or 01XXXXXXXXX"}).optional(),
 address:z.string({invalid_type_error:"Address must be string"})
 .max(200,{message:"Address can not be exceed 200 characters"})
 .optional()
@@ -157,6 +157,4 @@ isDeleted:z.boolean({invalid_type_error:"ïsDeleted must be true or false"})
 .optional(),
 isVerified:z.boolean({invalid_type_error:"isVerified must be true or false"})
 .optional(),
-
-
 });
